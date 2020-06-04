@@ -10,5 +10,8 @@ package clases;
  * @author Kraze
  */
 public abstract class Producto {
+    private int id; //ID del producto
+    private String nombre; //Nombre del producto
+    private String descripcion; //Breve descripción del producto (opcional)
     
 }
