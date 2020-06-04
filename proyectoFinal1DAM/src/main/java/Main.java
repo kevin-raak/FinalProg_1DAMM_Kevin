@@ -1,9 +1,11 @@
 import clases.*;
+import interfaz.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -39,8 +41,12 @@ public class Main {
                     + "parcial BOOLEAN,"
                     + "horaEntrada INT(4) NOT NULL,"
                     + "horaSalida INT(4) NOT NULL,"
+                    + "salario INT(9) NOT NULL,"
                     + "PRIMARY KEY (`dni`))");
             Usuario admin = new Usuario("admin","admin");
+            JFrameMain interfaz = new JFrameMain();
+            interfaz.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            interfaz.setVisible(true);
             
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);

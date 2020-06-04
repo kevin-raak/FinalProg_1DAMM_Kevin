@@ -11,8 +11,8 @@ package clases;
  */
 public class Pescaderia extends Empleado{
 
-    public Pescaderia(String dni, String nombre, String apellidos, boolean parcial, short horaEntrada, short horaSalida) {
-        super(dni, nombre, apellidos, parcial, horaEntrada, horaSalida);
+    public Pescaderia(String dni, String nombre, String apellidos, boolean parcial, short horaEntrada, short horaSalida, int salario) {
+        super(dni, nombre, apellidos, parcial, horaEntrada, horaSalida, salario);
     }
     
 }

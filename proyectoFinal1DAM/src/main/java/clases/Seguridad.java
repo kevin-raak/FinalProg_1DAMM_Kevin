@@ -11,8 +11,8 @@ package clases;
  */
 public class Seguridad extends Empleado{
 
-    public Seguridad(String dni, String nombre, String apellidos, boolean parcial, short horaEntrada, short horaSalida) {
-        super(dni, nombre, apellidos, parcial, horaEntrada, horaSalida);
+    public Seguridad(String dni, String nombre, String apellidos, boolean parcial, short horaEntrada, short horaSalida, int salario) {
+        super(dni, nombre, apellidos, parcial, horaEntrada, horaSalida, salario);
     }
     
 }

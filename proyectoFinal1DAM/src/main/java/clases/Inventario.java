@@ -11,8 +11,8 @@ package clases;
  */
 public class Inventario extends Empleado{
 
-    public Inventario(String dni, String nombre, String apellidos, boolean parcial, short horaEntrada, short horaSalida) {
-        super(dni, nombre, apellidos, parcial, horaEntrada, horaSalida);
+    public Inventario(String dni, String nombre, String apellidos, boolean parcial, short horaEntrada, short horaSalida, int salario) {
+        super(dni, nombre, apellidos, parcial, horaEntrada, horaSalida, salario);
     }
     
 }

@@ -23,8 +23,9 @@ public abstract class Empleado {
     private boolean parcial; //TRUE si trabaja jornada parcial, FALSE si es jornada completa.
     private short horaEntrada; //La hora a la que entra (formato 24H, ejemplos: 0900, 0830, 2245).
     private short horaSalida; //La hora a la que sale (formato 24H, ejemplos: 0900, 0830, 2245).
+    private int salario;//El salario mensual del empleado.
 
-    public Empleado(String dni, String nombre, String apellidos, boolean parcial, short horaEntrada, short horaSalida) {
+    public Empleado(String dni, String nombre, String apellidos, boolean parcial, short horaEntrada, short horaSalida, int salario) {
         try {
         this.dni = dni;
         this.nombre = nombre;
@@ -32,8 +33,9 @@ public abstract class Empleado {
         this.parcial = parcial;
         this.horaEntrada = horaEntrada;
         this.horaSalida = horaSalida;
+        this.salario = salario;
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
-            String sql = "REPLACE INTO empleado(dni, nombre, apellidos, parcial, horaEntrada, horaSalida) VALUES(?,?,?,?,?,?)";
+            String sql = "REPLACE INTO empleado(dni, nombre, apellidos, parcial, horaEntrada, horaSalida, salario) VALUES(?,?,?,?,?,?,?)";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1,dni);
             statement.setString(2,nombre);
@@ -41,6 +43,7 @@ public abstract class Empleado {
             statement.setBoolean(4,parcial);
             statement.setShort(5,horaEntrada);
             statement.setShort(6,horaSalida);
+            statement.setInt(7,salario);
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
