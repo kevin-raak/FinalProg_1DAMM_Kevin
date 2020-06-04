@@ -92,8 +92,18 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
 
         remEmpleado.setText("Eliminar empleado");
+        remEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                remEmpleadoActionPerformed(evt);
+            }
+        });
 
         modEmpleado.setText("Modificar empleado");
+        modEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modEmpleadoActionPerformed(evt);
+            }
+        });
 
         listaProductos.setText("Lista de productos");
         listaProductos.addActionListener(new java.awt.event.ActionListener() {
@@ -110,8 +120,18 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
 
         remProducto.setText("Eliminar producto");
+        remProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                remProductoActionPerformed(evt);
+            }
+        });
 
         modProducto.setText("Modificar producto");
+        modProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modProductoActionPerformed(evt);
+            }
+        });
 
         listaUsuarios.setText("Lista de usuarios");
         listaUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -121,8 +141,18 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
 
         addUsuario.setText("Añadir usuario");
+        addUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addUsuarioActionPerformed(evt);
+            }
+        });
 
         remUsuario.setText("Eliminar usuario");
+        remUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                remUsuarioActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
@@ -226,7 +256,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductoActionPerformed
-        // TODO add your handling code here:
+        JFrameEditar ventana = new JFrameEditar("producto", "anadir");
+        ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        ventana.setVisible(true);
     }//GEN-LAST:event_addProductoActionPerformed
 
     private void listaEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaEmpleadosActionPerformed
@@ -285,6 +317,42 @@ public class JFramePrincipal extends javax.swing.JFrame {
         ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         ventana.setVisible(true);
     }//GEN-LAST:event_addEmpleadoActionPerformed
+
+    private void remEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remEmpleadoActionPerformed
+        JFrameEditar ventana = new JFrameEditar("empleado", "eliminar");
+        ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_remEmpleadoActionPerformed
+
+    private void modEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modEmpleadoActionPerformed
+        JFrameEditar ventana = new JFrameEditar("empleado", "modificar");
+        ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_modEmpleadoActionPerformed
+
+    private void remProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remProductoActionPerformed
+        JFrameEditar ventana = new JFrameEditar("producto", "eliminar");
+        ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_remProductoActionPerformed
+
+    private void modProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modProductoActionPerformed
+        JFrameEditar ventana = new JFrameEditar("producto", "modificar");
+        ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_modProductoActionPerformed
+
+    private void addUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUsuarioActionPerformed
+        JFrameEditar ventana = new JFrameEditar("usuario", "anadir");
+        ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_addUsuarioActionPerformed
+
+    private void remUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remUsuarioActionPerformed
+        JFrameEditar ventana = new JFrameEditar("usuario", "eliminar");
+        ventana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_remUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

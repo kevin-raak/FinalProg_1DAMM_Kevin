@@ -209,11 +209,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar empleado"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="remEmpleadoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="modEmpleado">
           <Properties>
             <Property name="text" type="java.lang.String" value="Modificar empleado"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modEmpleadoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="listaProductos">
           <Properties>
@@ -235,11 +241,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar producto"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="remProductoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="modProducto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Modificar producto"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modProductoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="listaUsuarios">
           <Properties>
@@ -253,11 +265,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="A&#xf1;adir usuario"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addUsuarioActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="remUsuario">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar usuario"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="remUsuarioActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>

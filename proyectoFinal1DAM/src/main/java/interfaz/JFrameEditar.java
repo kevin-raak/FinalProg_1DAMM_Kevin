@@ -5,8 +5,9 @@
  */
 package interfaz;
 
-import clases.Usuario;
+import clases.*;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +29,59 @@ public class JFrameEditar extends javax.swing.JFrame {
         this.dato = dato;
         this.tipo = tipo;
         initComponents();
-        this.titulo.setText(tipo + " " + dato);
+        
+        if (tipo.equals("anadir")){
+            this.titulo.setText("Añadir " + dato);
+        }else if (tipo.equals("modificar")){
+            this.titulo.setText("Modificar " + dato);
+        }else {
+            this.titulo.setText("Eliminar " + dato);
+            jTextField2.setVisible(false);
+            jLabel2.setVisible(false);
+            jTextField3.setVisible(false);
+            jLabel3.setVisible(false);
+            jTextField4.setVisible(false);
+            jLabel4.setVisible(false);
+            jTextField5.setVisible(false);
+            jLabel5.setVisible(false);
+            jTextField6.setVisible(false);
+            jLabel6.setVisible(false);
+            jTextField7.setVisible(false);
+            jLabel7.setVisible(false);
+            jTextField8.setVisible(false);
+            jLabel8.setVisible(false);
+        }
+        
+        if (dato.equals("usuario")) {
+            jLabel1.setText("Usuario");
+            jLabel2.setText("Contraseña");
+            
+            jTextField3.setVisible(false);
+            jLabel3.setVisible(false);
+            jTextField4.setVisible(false);
+            jLabel4.setVisible(false);
+            jTextField5.setVisible(false);
+            jLabel5.setVisible(false);
+            jTextField6.setVisible(false);
+            jLabel6.setVisible(false);
+            jTextField7.setVisible(false);
+            jLabel7.setVisible(false);
+            jTextField8.setVisible(false);
+            jLabel8.setVisible(false);
+        }else if (dato.equals("producto")){
+            jLabel1.setText("ID");
+            jLabel2.setText("Nombre");
+            jLabel3.setText("Descripción");
+            jLabel4.setText("Caduca?");
+            jLabel5.setText("Fecha de Caducidad");
+            
+            jTextField6.setVisible(false);
+            jLabel6.setVisible(false);
+            jTextField7.setVisible(false);
+            jLabel7.setVisible(false);
+            jTextField8.setVisible(false);
+            jLabel8.setVisible(false);
+        }
     }
     
     public JFrameEditar() {
@@ -220,32 +273,49 @@ public class JFrameEditar extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
-            String valores = "";
-            String valoresRest = "";
-            if (dato.equals("empleado")) {
-                valores = "?,?,?,?,?,?,?,?";
-            }else if (dato.equals("producto")){
-                valores = "?,?,?,?,?";
-                valoresRest = "/* ?,?,? */";
+            PreparedStatement statement = con.prepareStatement("/* Hello */");
+            if (!tipo.equals("eliminar")) {
+                if (dato.equals("empleado")) {
+                    String sql = "REPLACE INTO empleado VALUES (?,?,?,?,?,?,?,?);";
+                    statement = con.prepareStatement(sql);
+                    statement.setString(1,jTextField1.getText());
+                    statement.setString(2,jTextField2.getText());
+                    statement.setString(3,jTextField3.getText());
+                    statement.setBoolean(4,true);
+                    statement.setInt(5,Integer.parseInt(jTextField5.getText()));
+                    statement.setInt(6,Integer.parseInt(jTextField6.getText()));
+                    statement.setInt(7,Integer.parseInt(jTextField7.getText()));
+                    statement.setInt(8,Integer.parseInt(jTextField8.getText()));
+                }else if (dato.equals("producto")){
+                    String sql = "REPLACE INTO producto VALUES (?,?,?,?,?);";
+                    statement = con.prepareStatement(sql);
+                    statement.setInt(1,Integer.parseInt(jTextField1.getText()));
+                    statement.setString(2,jTextField2.getText());
+                    statement.setString(3,jTextField3.getText());
+                    statement.setBoolean(4,true);
+                    statement.setDate(5,Date.valueOf(jTextField5.getText()));
+                }else {
+                    String sql = "REPLACE INTO usuario VALUES (?,?);";
+                    statement = con.prepareStatement(sql);
+                    statement.setString(1,jTextField1.getText());
+                    statement.setString(2,jTextField2.getText());
+                }
             }else {
-                valores = "?,?";
-                valoresRest = "?,?,?,?,?,?";
+                if (dato.equals("empleado")) {
+                    String sql = "DELETE FROM empleado WHERE dni = ?;";
+                    statement = con.prepareStatement(sql);
+                    statement.setString(1,jTextField1.getText());
+                }else if (dato.equals("producto")){
+                    String sql = "DELETE FROM producto WHERE id = ?;";
+                    statement = con.prepareStatement(sql);
+                    statement.setInt(1,Integer.parseInt(jTextField1.getText()));
+                }else {
+                    String sql = "DELETE FROM usuario WHERE usuario = ?;";
+                    statement = con.prepareStatement(sql);
+                    statement.setString(1,jTextField1.getText());   
+                }
             }
-            String sql = "REPLACE INTO ? VALUES ("+valores+");"+valoresRest;
-            PreparedStatement statement = con.prepareStatement(sql);
-            statement.setString(1,dato);
-            ResultSet rs = statement.executeQuery();
-            if (!rs.next()) {
-                this.label5.setText("Usuario incorrecto");
-            }else if (!rs.getString("contrasena").equals(String.valueOf(this.jPasswordField1.getPassword()))){
-                this.label5.setText("Contraseña incorrecta");
-            }else {
-                this.label5.setText("");
-                JFramePrincipal principal = new JFramePrincipal();
-                principal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                principal.setVisible(true);
-                dispose();
-            }
+            statement.executeUpdate();
             
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
