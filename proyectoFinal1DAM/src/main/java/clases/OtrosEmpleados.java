@@ -9,6 +9,6 @@ package clases;
  *
  * @author Kraze
  */
-public abstract class Producto {
+public class OtrosEmpleados extends Empleado{
     
 }
