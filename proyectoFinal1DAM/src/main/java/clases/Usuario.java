@@ -13,13 +13,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * En la clase Usuario se declaran el nombre de usuario y la contraseña de todos las personas que tendrán acceso al programa.
  * @author Kraze
  */
 public class Usuario {
     private String usuario; //Nombre de ususario
     private String contrasena; //Contraseña
 
+    /**
+     * El constructor de Usuario se encarga de crear la clase y de guardar los respectivos datos en su tabla en la base de datos.
+     * @param usuario Nombre de ususario
+     * @param contrasena Contraseña
+     */
     public Usuario(String usuario, String contrasena) {
         try {
         this.usuario = usuario;

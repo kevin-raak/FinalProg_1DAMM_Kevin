@@ -13,7 +13,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * En la clase Empleado se determinan todos los datos de cada empleado del supermercado. Es una clase abstracta, los empleados se construyen 
+ * mediante las subclases ya que el tipo de empleado lo denominan las subclases.
  * @author Kraze
  */
 public abstract class Empleado {
@@ -25,6 +26,18 @@ public abstract class Empleado {
     private short horaSalida; //La hora a la que sale (formato 24H, ejemplos: 0900, 0830, 2245).
     private int salario;//El salario mensual del empleado.
 
+    /**
+     * Los constructores de Empleado toman todas las variable escritas e las inserta en su correspondiente
+     * tabla en la base de datos MYSQL.
+     * @param dni DNI o NIE del empleado.
+     * @param nombre Nombre del empleado.
+     * @param apellidos Apellido(s) del empleado.
+     * @param parcial Si su jornada es parcial (TRUE) o completa (FALSE).
+     * @param horaEntrada Su hora de entrada (FORMATO MILITAR, ejs.: 2315, 0900).
+     * @param horaSalida Su hora de salida (FORMATO MILITAR, ejs.: 2315, 0900).
+     * @param salario Su salario mensual (NO SE ADMITEN DECIMALES).
+     * @param numCaja El número de la caja donde trabaja.
+     */
     public Empleado(String dni, String nombre, String apellidos, boolean parcial, short horaEntrada, short horaSalida, int salario, byte numCaja) {
         try {
         this.dni = dni;
@@ -51,6 +64,17 @@ public abstract class Empleado {
         }
     }
     
+    /**
+     * Los constructores de Empleado toman todas las variable escritas e las inserta en su correspondiente
+     * tabla en la base de datos MYSQL.
+     * @param dni DNI o NIE del empleado.
+     * @param nombre Nombre del empleado.
+     * @param apellidos Apellido(s) del empleado.
+     * @param parcial Si su jornada es parcial (TRUE) o completa (FALSE).
+     * @param horaEntrada Su hora de entrada (FORMATO MILITAR, ejs.: 2315, 0900).
+     * @param horaSalida Su hora de salida (FORMATO MILITAR, ejs.: 2315, 0900).
+     * @param salario Su salario mensual (NO SE ADMITEN DECIMALES). 
+     */
     public Empleado(String dni, String nombre, String apellidos, boolean parcial, short horaEntrada, short horaSalida, int salario) {
         try {
         this.dni = dni;
@@ -76,51 +100,99 @@ public abstract class Empleado {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    /**
+     * Getter del DNI del empleado.
+     * @return Devuelve su DNI en un String.
+     */
     public String getDni() {
         return dni;
     }
 
+    /**
+     * Setter del DNI del empleado.
+     * @param dni Su DNI o NIE en un String.
+     */
     public void setDni(String dni) {
         this.dni = dni;
     }
-
+    
+    /**
+     * Getter del nombre del empleado.
+     * @return Devuelve su nombre en un String.
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * Setter del nombre del empleado.
+     * @param nombre Su nombre en un String.
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * Getter de los apellidos del empleado.
+     * @return Devuelve sus apellidos en un String.
+     */
     public String getApellidos() {
         return apellidos;
     }
 
+    /**
+     * Setter de los apellidos del empleado.
+     * @param apellidos Sus apellidos en un String.
+     */
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
 
+    /**
+     * Getter del tipo de contrato del empleado.
+     * @return Devuelve TRUE si es parcial, FALSE si es jornada completa.
+     */
     public boolean isParcial() {
         return parcial;
     }
 
+    /**
+     * Setter del tipo de contrato del empleado.
+     * @param parcial TRUE si es jornada parcial, FALSE si es completa.
+     */
     public void setParcial(boolean parcial) {
         this.parcial = parcial;
     }
 
+    /**
+     * Getter de la hora de entrada del empleado.
+     * @return Devuelve su hora de entrada en un INT.
+     */
     public short getHoraEntrada() {
         return horaEntrada;
     }
 
+    /**
+     * Setter de la hora de entrada del empleado.
+     * @param horaEntrada La hora de entrada EN FORMATO MILITAR (ejs.: 0900, 2315, 0000) en un INT.
+     */
     public void setHoraEntrada(short horaEntrada) {
         this.horaEntrada = horaEntrada;
     }
-
+    
+    /**
+     * Getter de la hora de salida del empleado.
+     * @return Devuelve su hora de salida en un INT.
+     */
     public short getHoraSalida() {
         return horaSalida;
     }
-
+    
+    /**
+     * Setter de la hora de salida del empleado.
+     * @param horaEntrada La hora de salida EN FORMATO MILITAR (ejs.: 0900, 2315, 0000) en un INT.
+     */
     public void setHoraSalida(short horaSalida) {
         this.horaSalida = horaSalida;
     }

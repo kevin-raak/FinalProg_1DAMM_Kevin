@@ -11,6 +11,12 @@ package clases;
  */
 public class OtrosProductos extends Producto{
 
+    /**
+     * Crea un producto no comestible.
+     * @param id ID del producto, es un número.
+     * @param nombre Nombre del producto, lo que iría en la etiqueta del precio.
+     * @param descripcion Breve descripción del producto. Máximo 150 caracteres.
+     */
     public OtrosProductos(int id, String nombre, String descripcion) {
         super(id, nombre, descripcion);
     }
