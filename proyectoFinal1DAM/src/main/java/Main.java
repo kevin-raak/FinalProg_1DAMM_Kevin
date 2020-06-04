@@ -1,4 +1,4 @@
-
+import clases.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -22,7 +22,26 @@ public class Main {
      */
     public static void main(String[] args) {
         try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/institutos","root", "root");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
+            con.createStatement().execute("CREATE TABLE IF NOT EXISTS usuario("
+                    + "usuario VARCHAR(12) NOT NULL,"
+                    + "contrasena VARCHAR(16) NOT NULL,"
+                    + "PRIMARY KEY (`usuario`))");
+            con.createStatement().execute("CREATE TABLE IF NOT EXISTS producto("
+                    + "id INT NOT NULL,"
+                    + "nombre VARCHAR(45) NOT NULL,"
+                    + "descripcion VARCHAR(150) NULL,"
+                    + "PRIMARY KEY (`id`))");
+            con.createStatement().execute("CREATE TABLE IF NOT EXISTS empleado("
+                    + "dni VARCHAR(11) NOT NULL,"
+                    + "nombre VARCHAR(45) NOT NULL,"
+                    + "apellidos VARCHAR(100) NOT NULL,"
+                    + "parcial BOOLEAN,"
+                    + "horaEntrada INT(4) NOT NULL,"
+                    + "horaSalida INT(4) NOT NULL,"
+                    + "PRIMARY KEY (`dni`))");
+            Usuario admin = new Usuario("admin","admin");
+            
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
