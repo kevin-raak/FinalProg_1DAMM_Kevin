@@ -9,7 +9,7 @@ package clases;
  *
  * @author Kraze
  */
-public class Comida extends Producto{
-    private boolean caduca; //TRUE si tiene fecha de caducidad, FALSE si no
-    private String fechaCaducidad; //Fecha de caducidad (FORMATO: dd/mm/yyyy)(EJ: 31/12/2020)
+public class Usuario {
+    private String usuario; //Nombre de ususario
+    private String contrasena; //Contraseña
 }
