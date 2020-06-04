@@ -32,7 +32,9 @@ public class Main {
             con.createStatement().execute("CREATE TABLE IF NOT EXISTS producto("
                     + "id INT NOT NULL,"
                     + "nombre VARCHAR(45) NOT NULL,"
-                    + "descripcion VARCHAR(150) NULL,"
+                    + "descripcion VARCHAR(150),"
+                    + "caduca BOOLEAN,"
+                    + "fechaCaducidad DATE,"
                     + "PRIMARY KEY (`id`))");
             con.createStatement().execute("CREATE TABLE IF NOT EXISTS empleado("
                     + "dni VARCHAR(11) NOT NULL,"
@@ -42,6 +44,7 @@ public class Main {
                     + "horaEntrada INT(4) NOT NULL,"
                     + "horaSalida INT(4) NOT NULL,"
                     + "salario INT(9) NOT NULL,"
+                    + "numCaja INT(2),"
                     + "PRIMARY KEY (`dni`))");
             Usuario admin = new Usuario("admin","admin");
             JFrameMain interfaz = new JFrameMain();

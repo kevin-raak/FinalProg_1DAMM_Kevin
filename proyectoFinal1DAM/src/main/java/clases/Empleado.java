@@ -25,6 +25,32 @@ public abstract class Empleado {
     private short horaSalida; //La hora a la que sale (formato 24H, ejemplos: 0900, 0830, 2245).
     private int salario;//El salario mensual del empleado.
 
+    public Empleado(String dni, String nombre, String apellidos, boolean parcial, short horaEntrada, short horaSalida, int salario, byte numCaja) {
+        try {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.parcial = parcial;
+        this.horaEntrada = horaEntrada;
+        this.horaSalida = horaSalida;
+        this.salario = salario;
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
+            String sql = "REPLACE INTO empleado(dni, nombre, apellidos, parcial, horaEntrada, horaSalida, salario) VALUES(?,?,?,?,?,?,?,?)";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1,dni);
+            statement.setString(2,nombre);
+            statement.setString(3,apellidos);
+            statement.setBoolean(4,parcial);
+            statement.setShort(5,horaEntrada);
+            statement.setShort(6,horaSalida);
+            statement.setInt(7,salario);
+            statement.setInt(8,numCaja);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public Empleado(String dni, String nombre, String apellidos, boolean parcial, short horaEntrada, short horaSalida, int salario) {
         try {
         this.dni = dni;
@@ -44,6 +70,7 @@ public abstract class Empleado {
             statement.setShort(5,horaEntrada);
             statement.setShort(6,horaSalida);
             statement.setInt(7,salario);
+            statement.setNull(8, java.sql.Types.INTEGER);
             statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);

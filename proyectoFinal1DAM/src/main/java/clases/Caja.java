@@ -13,7 +13,7 @@ public class Caja extends Empleado{
     private byte numCaja; //El número de la caja en la que el empleado trabaja
 
     public Caja(byte numCaja, String dni, String nombre, String apellidos, boolean parcial, short horaEntrada, short horaSalida, int salario) {
-        super(dni, nombre, apellidos, parcial, horaEntrada, horaSalida, salario);
+        super(dni, nombre, apellidos, parcial, horaEntrada, horaSalida, salario, numCaja);
         this.numCaja = numCaja;
     }
     

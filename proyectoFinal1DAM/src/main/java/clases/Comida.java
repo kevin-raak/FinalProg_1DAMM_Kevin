@@ -11,19 +11,13 @@ package clases;
  */
 public class Comida extends Producto{
     private boolean caduca; //TRUE si tiene fecha de caducidad, FALSE si no
-    private String fechaCaducidad; //Fecha de caducidad (FORMATO: dd/mm/yyyy)(EJ: 31/12/2020)
+    private String fechaCaducidad; //Fecha de caducidad (FORMATO: yyyy-mm-dd)(EJ: 2020-12-31)
 
     public Comida(boolean caduca, String fechaCaducidad, int id, String nombre, String descripcion) {
-        super(id, nombre, descripcion);
+        super(id, nombre, descripcion, fechaCaducidad);
         this.caduca = caduca;
         this.fechaCaducidad = fechaCaducidad;
     }
 
-    public Comida(boolean caduca, String fechaCaducidad, int id, String nombre) {
-        super(id, nombre);
-        this.caduca = caduca;
-        this.fechaCaducidad = fechaCaducidad;
-    }
-    
     
 }

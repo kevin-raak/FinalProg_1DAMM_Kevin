@@ -6,6 +6,7 @@
 package interfaz;
 
 import clases.Usuario;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -54,6 +56,11 @@ public class JFrameMain extends javax.swing.JFrame {
 
         checkbox1.setForeground(new java.awt.Color(255, 255, 255));
         checkbox1.setLabel("Mostrar contraseña");
+        checkbox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                checkbox1ItemStateChanged(evt);
+            }
+        });
 
         jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +92,12 @@ public class JFrameMain extends javax.swing.JFrame {
         });
 
         label5.setForeground(new java.awt.Color(255, 51, 51));
+
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -162,12 +175,28 @@ public class JFrameMain extends javax.swing.JFrame {
                 this.label5.setText("Contraseña incorrecta");
             }else {
                 this.label5.setText("");
+                JFramePrincipal principal = new JFramePrincipal();
+                principal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                principal.setVisible(true);
+                dispose();
             }
             
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
+
+    private void checkbox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkbox1ItemStateChanged
+        if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+            jPasswordField1.setEchoChar((char) 0);
+        } else {
+            jPasswordField1.setEchoChar('*');
+        }
+    }//GEN-LAST:event_checkbox1ItemStateChanged
 
     /**
      * @param args the command line arguments
