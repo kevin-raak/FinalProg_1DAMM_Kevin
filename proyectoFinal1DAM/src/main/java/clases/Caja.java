@@ -10,5 +10,12 @@ package clases;
  * @author Kraze
  */
 public class Caja extends Empleado{
+    private byte numCaja; //El número de la caja en la que el empleado trabaja
+
+    public Caja(byte numCaja, String dni, String nombre, String apellidos, boolean parcial, short horaEntrada, short horaSalida) {
+        super(dni, nombre, apellidos, parcial, horaEntrada, horaSalida);
+        this.numCaja = numCaja;
+    }
+    
     
 }

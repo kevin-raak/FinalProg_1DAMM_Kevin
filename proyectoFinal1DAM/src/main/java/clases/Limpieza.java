@@ -10,5 +10,9 @@ package clases;
  * @author Kraze
  */
 public class Limpieza extends Empleado{
+
+    public Limpieza(String dni, String nombre, String apellidos, boolean parcial, short horaEntrada, short horaSalida) {
+        super(dni, nombre, apellidos, parcial, horaEntrada, horaSalida);
+    }
     
 }

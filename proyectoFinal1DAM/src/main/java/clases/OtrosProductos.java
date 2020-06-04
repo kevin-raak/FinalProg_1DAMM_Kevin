@@ -10,5 +10,13 @@ package clases;
  * @author Kraze
  */
 public class OtrosProductos extends Producto{
+
+    public OtrosProductos(int id, String nombre, String descripcion) {
+        super(id, nombre, descripcion);
+    }
+
+    public OtrosProductos(int id, String nombre) {
+        super(id, nombre);
+    }
     
 }
