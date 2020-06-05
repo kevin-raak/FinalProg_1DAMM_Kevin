@@ -81,11 +81,21 @@ public abstract class Producto {
     }
 
     /**
-     * Setter de la ID del producto.
+     * Setter de la ID del producto. Actualiza el registro en la base de datos.
      * @param id La ID del producto, INT.
      */
     public void setId(int id) {
         this.id = id;
+        try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
+            String sql = "UPDATE producto SET id = ? WHERE id = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setInt(1,id);
+            statement.setInt(2,this.id);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -97,11 +107,21 @@ public abstract class Producto {
     }
 
     /**
-     * Setter del nombre del producto.
+     * Setter del nombre del producto. Actualiza el registro en la base de datos.
      * @param nombre Nombre del producto en String.
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+        try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
+            String sql = "UPDATE producto SET nombre = ? WHERE id = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1,nombre);
+            statement.setInt(2,this.id);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -113,11 +133,21 @@ public abstract class Producto {
     }
 
     /**
-     * Setter de la descripción del producto.
+     * Setter de la descripción del producto. Actualiza el registro en la base de datos.
      * @param descripcion Descripción del producto en String.
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+        try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
+            String sql = "UPDATE producto SET descripcion = ? WHERE id = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1,descripcion);
+            statement.setInt(2,this.id);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     

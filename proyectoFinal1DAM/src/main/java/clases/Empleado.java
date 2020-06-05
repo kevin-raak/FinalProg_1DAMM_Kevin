@@ -110,11 +110,21 @@ public abstract class Empleado {
     }
 
     /**
-     * Setter del DNI del empleado.
+     * Setter del DNI del empleado. Actualiza el registro en la base de datos.
      * @param dni Su DNI o NIE en un String.
      */
     public void setDni(String dni) {
         this.dni = dni;
+        try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
+            String sql = "UPDATE empleado SET dni = ? WHERE dni = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1,dni);
+            statement.setString(2,this.dni);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /**
@@ -126,11 +136,21 @@ public abstract class Empleado {
     }
 
     /**
-     * Setter del nombre del empleado.
+     * Setter del nombre del empleado. Actualiza el registro en la base de datos.
      * @param nombre Su nombre en un String.
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+        try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
+            String sql = "UPDATE empleado SET nombre = ? WHERE dni = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1,nombre);
+            statement.setString(2,this.dni);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -142,11 +162,21 @@ public abstract class Empleado {
     }
 
     /**
-     * Setter de los apellidos del empleado.
+     * Setter de los apellidos del empleado. Actualiza el registro en la base de datos.
      * @param apellidos Sus apellidos en un String.
      */
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
+        try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
+            String sql = "UPDATE empleado SET apellidos = ? WHERE dni = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1,apellidos);
+            statement.setString(2,this.dni);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -158,11 +188,21 @@ public abstract class Empleado {
     }
 
     /**
-     * Setter del tipo de contrato del empleado.
+     * Setter del tipo de contrato del empleado. Actualiza el registro en la base de datos.
      * @param parcial TRUE si es jornada parcial, FALSE si es completa.
      */
     public void setParcial(boolean parcial) {
         this.parcial = parcial;
+        try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
+            String sql = "UPDATE empleado SET parcial = ? WHERE dni = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setBoolean(1,parcial);
+            statement.setString(2,this.dni);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -174,11 +214,21 @@ public abstract class Empleado {
     }
 
     /**
-     * Setter de la hora de entrada del empleado.
+     * Setter de la hora de entrada del empleado. Actualiza el registro en la base de datos.
      * @param horaEntrada La hora de entrada EN FORMATO MILITAR (ejs.: 0900, 2315, 0000) en un INT.
      */
     public void setHoraEntrada(short horaEntrada) {
         this.horaEntrada = horaEntrada;
+        try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
+            String sql = "UPDATE empleado SET horaEntrada = ? WHERE dni = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setInt(1,horaEntrada);
+            statement.setString(2,this.dni);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /**
@@ -190,11 +240,21 @@ public abstract class Empleado {
     }
     
     /**
-     * Setter de la hora de salida del empleado.
+     * Setter de la hora de salida del empleado. Actualiza el registro en la base de datos.
      * @param horaEntrada La hora de salida EN FORMATO MILITAR (ejs.: 0900, 2315, 0000) en un INT.
      */
     public void setHoraSalida(short horaSalida) {
         this.horaSalida = horaSalida;
+        try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
+            String sql = "UPDATE empleado SET horaSalida = ? WHERE dni = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setInt(1,horaSalida);
+            statement.setString(2,this.dni);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     

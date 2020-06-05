@@ -5,6 +5,13 @@
  */
 package clases;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Tipo de empleado que trabaja en la caja (cajero/a)
  * @author Kraze
@@ -37,11 +44,21 @@ public class Caja extends Empleado{
     }
 
     /**
-     * Setter del número de caja del empleado.
+     * Setter del número de caja del empleado. Actualiza el registro en la base de datos.
      * @param numCaja El número de caja en INT.
      */
     public void setNumCaja(byte numCaja) {
         this.numCaja = numCaja;
+        try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
+            String sql = "UPDATE empleado SET numCaja = ? WHERE dni = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setInt(1,numCaja);
+            statement.setString(2,this.getDni());
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     

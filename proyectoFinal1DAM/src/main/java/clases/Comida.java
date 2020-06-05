@@ -5,6 +5,14 @@
  */
 package clases;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Kraze
@@ -36,11 +44,21 @@ public class Comida extends Producto{
     }
 
     /**
-     * Setter de la variable caduca.
+     * Setter de la variable caduca. Actualiza el registro en la base de datos.
      * @param caduca TRUE si tiene fecha de caducidad, FALSE si no.
      */
     public void setCaduca(boolean caduca) {
         this.caduca = caduca;
+        try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
+            String sql = "UPDATE producto SET caduca = ? WHERE id = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setBoolean(1,caduca);
+            statement.setInt(2,this.getId());
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -57,6 +75,16 @@ public class Comida extends Producto{
      */
     public void setFechaCaducidad(String fechaCaducidad) {
         this.fechaCaducidad = fechaCaducidad;
+        try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
+            String sql = "UPDATE producto SET fechaCaducidad = ? WHERE id = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setDate(1,Date.valueOf(fechaCaducidad));
+            statement.setInt(2,this.getId());
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     

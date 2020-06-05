@@ -39,6 +39,50 @@ public class Usuario {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    /**
+     * Getter del nombre de usuario.
+     * @return El nombre de usuario en String.
+     */
+    public String getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * Setter del nombre de usuario. Actualiza el registro en la base de datos.
+     * @param usuario 
+     */
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+        try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
+            String sql = "UPDATE usuario SET usuario = ? WHERE usuario = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1,usuario);
+            statement.setString(2,this.usuario);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    /**
+     * Setter de contraseña del usuario. Actualiza el registro en la base de datos.
+     * @param contrasena Contraseña. String.
+     */
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+        try {
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
+            String sql = "UPDATE usuario SET contrasena = ? WHERE usuario = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1,contrasena);
+            statement.setString(2,this.usuario);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     
 }
