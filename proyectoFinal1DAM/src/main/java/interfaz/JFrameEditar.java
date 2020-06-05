@@ -146,27 +146,11 @@ public class JFrameEditar extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Hora de salida");
 
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField1");
-
-        jTextField3.setText("jTextField1");
-
-        jTextField4.setText("jTextField1");
-
-        jTextField5.setText("jTextField1");
-
-        jTextField6.setText("jTextField1");
-
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Salario mensual");
 
-        jTextField7.setText("jTextField1");
-
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Número de caja");
-
-        jTextField8.setText("jTextField1");
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Aplicar");

@@ -35,7 +35,7 @@ public abstract class Producto {
         this.nombre = nombre;
         this.descripcion = descripcion;
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
-            String sql = "REPLACE INTO producto(id, nombre, descripcion)VALUES(?,?,?,?,?)";
+            String sql = "REPLACE INTO producto VALUES(?,?,?,?,?)";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setInt(1,id);
             statement.setString(2,nombre);
@@ -61,7 +61,7 @@ public abstract class Producto {
         this.nombre = nombre;
         this.descripcion = descripcion;
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
-            String sql = "REPLACE INTO producto(id, nombre, descripcion)VALUES(?,?,?)";
+            String sql = "REPLACE INTO producto(id, nombre, descripcion) VALUES(?,?,?)";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setInt(1,id);
             statement.setString(2,nombre);

@@ -47,6 +47,10 @@ public class Main {
                     + "numCaja INT(2),"
                     + "PRIMARY KEY (`dni`))");
             Usuario admin = new Usuario("admin","admin");
+            Empleado emp1 = new Caja((byte)(3), "487932Z", "Cajero", "Ejemplo Uno", false, (short)900, (short)1730, 1450);
+            Empleado emp2 = new Carniceria("5235987Q", "Carnicero", "Ejemplo Dos", true, (short)1700, (short)2145, 650);
+            Producto pro1 = new Comida(true, "2021-01-02", 645367244, "Producto Comestible Ejemplo", "Un producto ejemplar. Delicioso.");
+            Producto pro2 = new OtrosProductos(14636944, "Producto No Comestible Ejemplo", "Un producto ejemplar. No sabe bien.");
             JFrameMain interfaz = new JFrameMain();
             interfaz.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             interfaz.setVisible(true);

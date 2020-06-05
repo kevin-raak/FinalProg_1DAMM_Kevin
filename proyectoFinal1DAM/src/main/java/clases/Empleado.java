@@ -48,7 +48,7 @@ public abstract class Empleado {
         this.horaSalida = horaSalida;
         this.salario = salario;
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
-            String sql = "REPLACE INTO empleado(dni, nombre, apellidos, parcial, horaEntrada, horaSalida, salario) VALUES(?,?,?,?,?,?,?,?)";
+            String sql = "REPLACE INTO empleado VALUES(?,?,?,?,?,?,?,?)";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1,dni);
             statement.setString(2,nombre);
@@ -85,7 +85,7 @@ public abstract class Empleado {
         this.horaSalida = horaSalida;
         this.salario = salario;
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/supermercado","root", "root");
-            String sql = "REPLACE INTO empleado(dni, nombre, apellidos, parcial, horaEntrada, horaSalida, salario) VALUES(?,?,?,?,?,?,?)";
+            String sql = "REPLACE INTO empleado VALUES(?,?,?,?,?,?,?,?)";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1,dni);
             statement.setString(2,nombre);
